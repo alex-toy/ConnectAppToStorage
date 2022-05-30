@@ -2,6 +2,13 @@
 
 How to connect a Flask app to Azure SQL and Azure Blob Storage. In this project, everything is automated using Powershell scripts.
 
+THIS IS NOT WORKING :
+
+ArgumentError
+sqlalchemy.exc.ArgumentError: Could not parse rfc1738 URL from string 'DRIVER={ODBC Driver 17 for SQL Server};SERVER=tcp:flask-sql-server.database.windows.net;PORT=1433;DATABASE=flask-db;UID=alexadmin;PWD=p@ssword1234'
+
+line 12 : animals = models.Animal.query.all()
+
 ## Procedure
 
 **Run the Config and create the resource group :**

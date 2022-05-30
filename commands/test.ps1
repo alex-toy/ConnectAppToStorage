@@ -1,15 +1,18 @@
-$cfg_file = ".\commands\Configs\var.cfg"
+az vm run-command invoke `
+    --resource-group $RGName `
+    --name $VMName `
+    --command-id RunShellScript `
+    --scripts "
+        touch testfile
+    "
 
-# (Get-Content -Path $cfg_file) | ForEach-Object { $_ = $_.split("=")[0]; $_ } | Set-Content -Path $cfg_file
 
-
-$BLOB_STORAGE_KEY = "yugiuogihihmjlkljkmlklm"
-
-(Get-Content -Path $cfg_file) | ForEach-Object { 
-    $old = If ($_.split("=")[1]) {'BLOB_STORAGE_KEY=' + $_.split("=")[1]} Else {'BLOB_STORAGE_KEY'}
-    $new = 'BLOB_STORAGE_KEY=' + $BLOB_STORAGE_KEY
-    $_ -Replace $old, $new 
-} | Set-Content -Path $cfg_file
+    # --scripts "
+    #     sudo apt-get -y update && sudo apt-get -y install nginx python3-venv
+    #     cd /etc/nginx/sites-available
+    #     sudo unlink /etc/nginx/sites-enabled/default
+    #     sudo vim reverse-proxy.conf
+    # "
 
 
 
